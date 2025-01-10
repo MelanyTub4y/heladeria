@@ -1,0 +1,46 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fb;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* Navbar */
+nav {
+    background-color: #CDC1FF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 10px 0; /* Aumenta el padding vertical para hacerlo más grueso */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 12px 25px;
+    font-weight: 600;
+    border-radius: 25px;
+    background-color: #b8aee4;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #9488c9;
+    transform: scale(1.05);
+}
+

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% load static %}  <!-- Cargar archivos estáticos -->
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<html lang="es">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Heladería</title>
+    <style>
+        /* Estilos para el título y la descripción */
+        .titulo-productos {
+            text-align: center;
+            color: #9488c9;
+            font-size: 66px;
+            margin-top: 20px;
+            font-family: 'Nerko One', cursive;
+        }
+
+        .descripcion-productos {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        /* Estilos de la tarjeta de producto */
+        .productos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .producto-card {
+            width: 250px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+            padding: 10px;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .producto-imagen {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .producto-info {
+            padding: 15px;
+        }
+
+        .producto-nombre {
+            font-size: 20px;
+            color: #9488c9;
+            margin-bottom: 10px;
+        }
+
+        .producto-descripcion {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .producto-precio {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .btn-comprar {
+            background-color: #beb3eb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-comprar:hover {
+            background-color: #FF4500;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="titulo-productos"> Nuestros Productos </h1>
+    <p class="descripcion-productos">Descubre nuestra deliciosa variedad de helados y postres artesanales. ¡Seguro encontrarás tu favorito!</p>
+
+    <div class="productos-container">
+        {% for producto in productos %}
+        <div class="producto-card">
+            <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}" class="producto-imagen">
+            <div class="producto-info">
+                <h3 class="producto-nombre">{{ producto.nombre }}</h3>
+                <p class="producto-descripcion">{{ producto.descripcion }}</p>
+                <p class="producto-precio">${{ producto.precio }}</p>
+                <a href="{% url 'pedido' %}" class="btn-comprar">Realizar pedidos</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
+{% endblock %}

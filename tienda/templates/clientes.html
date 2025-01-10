@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas de Clientes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #9488c9;
+            margin-top: 20px;
+            font-size: 66px;
+            font-family: 'Nerko One';
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .contenedor-reseñas {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .formulario-reseña {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .formulario-reseña h2 {
+            color: #9488c9;
+            margin-bottom: 15px;
+        }
+
+        .formulario-reseña input,
+        .formulario-reseña textarea,
+        .formulario-reseña button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .formulario-reseña button {
+            background-color: #beb3eb;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .formulario-reseña button:hover {
+            background-color: #9488c9;
+        }
+
+        .reseñas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .reseña {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .reseña img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .reseña h3 {
+            color: #9488c9;
+            margin-bottom: 10px;
+        }
+
+        .reseña p {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+
+    <div class="contenedor-reseñas">
+        <h1>Comentarios de Clientes</h1>
+
+        <!-- Formulario -->
+        <div class="formulario-reseña">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.nombre }}
+                </div>
+                <div class="form-group">
+                    {{ form.comentario }}
+                </div>
+                <div class="form-group">
+                    {{ form.imagen }}
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+            </form>
+        </div>
+
+        <!-- Lista de Comentarios -->
+        <h2 class="text-center">Reseñas</h2>
+        <div class="reseñas">
+            {% for comentario in comentarios %}
+                <div class="reseña">
+                    {% if comentario.imagen %}
+                        <img src="{{ comentario.imagen.url }}" alt="Imagen de {{ comentario.nombre }}">
+                    {% endif %}
+                    <h3>{{ comentario.nombre }}</h3>
+                    <p>{{ comentario.comentario }}</p>
+                    <p class="text-muted">{{ comentario.fecha }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

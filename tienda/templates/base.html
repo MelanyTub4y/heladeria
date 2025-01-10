@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Heladería{% endblock %}</title>
+    {% load static %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+   <style>
+        /* Estilo general para las redes sociales */
+        .social-link {
+            font-size: 18px; /* Tamaño del icono */
+            color: #fff; /* Color blanco */
+            text-decoration: none; /* Sin subrayado */
+            transition: color 0.3s; /* Transición para el color */
+            margin-left: 10px; /* Espacio entre el nombre y el icono */
+        }
+
+        .social-link:hover {
+            color: #CDC1FF; /* Cambio de color al pasar el mouse */
+        }
+
+        /* Estilo para el icono */
+        .social-icon {
+            display: inline-block;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.3s; /* Transición de color de fondo */
+            font-size: 18px; /* Tamaño ajustado para que el icono sea más pequeño */
+        }
+
+        .social-icon:hover {
+            background-color: #CDC1DF; /* Fondo con el color de Instagram al pasar el mouse */
+        }
+
+        /* Alineación del contenedor */
+        .social-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Espacio entre nombre y icono */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Inicio</a></li>
+            <li><a href="{% url 'productos' %}">Productos</a></li>
+            <li><a href="{% url 'clientes' %}">Clientes</a></li>
+            <li><a href="{% url 'sobrenosotras' %}">Sobre Nosotras</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        {% block content %}
+        <!-- Aquí se inyectará el contenido específico de cada página -->
+        {% endblock %}
+    </main>
+
+    <br><br>
+    <!-- Footer -->
+    <footer style="background-color: #b8aee4; color: white; padding: 20px 0; text-align: center; font-family: 'Arial', sans-serif; position: relative;">
+    <!-- Sección superior del pie de página -->
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; max-width: 1200px; margin: auto;">
+        <!-- Información de contacto -->
+        <div>
+            <h3 style="margin-bottom: 10px;">¡Contáctanos!</h3>
+            <p><i class="fa fa-phone"></i> Tel: +123 456 789</p>
+            <p><i class="fa fa-envelope"></i> Email: icesweet@hotmail.com</p>
+            <p><i class="fa fa-map-marker"></i> Dirección: Mall del Sol</p>
+        </div>
+
+      <!-- Redes sociales -->
+    <!-- Redes sociales -->
+    <div>
+        <h3 style="margin-bottom: 10px;">Síguenos</h3>
+        <div style="display: flex; justify-content: center; flex-direction: column; align-items: center; gap: 15px; margin-top: 10px;">
+            <!-- Autora 1 -->
+            <div class="social-container">
+                <p style="margin: 0; color: white;">Natalin Martinez</p>
+                <a href="https://www.instagram.com/zxzx.natii/" target="_blank" class="social-link">
+                     <a href="https://www.instagram.com/zxzx.natii" target="_blank">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="24" height="24">
+                    </a>
+                </a>
+            </div>
+            <!-- Autora 2 -->
+            <div class="social-container">
+                <p style="margin: 0; color: white;">Melany Tubay</p>
+                <a href="https://www.instagram.com/melanyy.to/?next=%2F" target="_blank" class="social-link">
+                      <a href="https://www.instagram.com/melanyy.to" target="_blank">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="24" height="24">
+                    </a>
+                </a>
+            </div>
+            <!-- Autora 3 -->
+            <div class="social-container">
+                <p style="margin: 0; color: white;">Rebeca Murillo</p>
+                <a style= "a img {border-radius: 50%; transition: transform 0.3s ease;} a img:hover {transform: scale(1.1);}>
+                <a href="https://www.instagram.com/rebeca28_14/?next=%2F" target="_blank" class="social-link">
+                    <div>
+                <a href="https://www.instagram.com/rebeca28_14" target="_blank">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" width="24" height="24">
+                </a>
+               </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <!-- Enlace interactivo -->
+        <div>
+            <h3 style="margin-bottom: 10px;">Explora</h3>
+            <ul style="list-style: none; padding: 0; color: white;">
+                <li><a href="/productos" style="text-decoration: none; color: white;">Productos</a></li>
+                <li><a href="/sobrenosotras" style="text-decoration: none; color: white;">Acerca de nosotros</a></li>
+                <li><a href="/pedido" style="text-decoration: none; color: white;">Pedidos</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Línea divisoria -->
+    <div style="border-top: 1px solid white; margin: 20px 0;"></div>
+
+    <!-- Derechos reservados -->
+    <p style="font-size: 14px;">© 2024 Heladería Dulce Sabor. Todos los derechos reservados.</p>
+
+    <!-- Botón al inicio -->
+    <button onclick="scrollToTop()" style="background-color: white; color: #9488c9; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; position: absolute; right: 20px; bottom: 20px;">
+        ↑ Ir al inicio
+    </button>
+</footer>
+
+<script>
+    // Función para volver al inicio
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+</script>
+
+</body>
+</html>

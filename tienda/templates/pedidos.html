@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}Realiza tu Pedido{% endblock %}
+
+{% block content %}
+{% load static %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realiza tu Pedido</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <style>
+        .producto-imagen {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .producto-card {
+            width: 250px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            overflow: hidden;
+        }
+        .carrito-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .boton-vaciar {
+            background-color: red;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .boton-finalizar {
+            background-color: #9488c9;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header style="background-color: #9488c9; padding: 20px; color: white; text-align: center;">
+        <h1>Realiza tu Pedido</h1>
+    </header>
+
+    <!-- Contenedor de productos -->
+    <section style="padding: 20px;">
+        <h2 style="text-align: center; margin-bottom: 20px; color: #9488c9;">Selecciona tus Productos</h2>
+        <div class="productos-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            {% for producto in productos %}
+            <div class="producto-card">
+                <img src="{% static producto.imagen %}" alt="{{ producto.nombre }}" class="producto-imagen">
+                <h3>{{ producto.nombre }}</h3>
+                <p>{{ producto.descripcion }} Precio: ${{ producto.precio }}</p>
+                <button onclick="agregarAlCarrito('{{ producto.nombre }}', {{ producto.precio }})" style="background-color: #9488c9; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">Agregar al carrito</button>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Carrito -->
+    <section style="padding: 20px;">
+        <h2 style="text-align: center; margin-bottom: 20px; color: #9488c9;">Tu Carrito</h2>
+        <ul id="carrito" style="max-width: 600px; margin: auto; list-style: none; padding: 0; border: 1px solid #ddd; border-radius: 10px;">
+            <li style="text-align: center; padding: 10px; color: #9488c9;">Tu carrito está vacío.</li>
+        </ul>
+        <div class="carrito-footer">
+            <button onclick="vaciarCarrito()" class="boton-vaciar">Vaciar Carrito</button>
+            <button onclick="finalizarPedido()" class="boton-finalizar">Finalizar Pedido</button>
+        </div>
+    </section>
+
+    <script>
+        const carrito = [];
+
+        function agregarAlCarrito(nombre, precio) {
+            const productoExistente = carrito.find(producto => producto.nombre === nombre);
+            if (productoExistente) {
+                productoExistente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio, cantidad: 1 });
+            }
+            mostrarCarrito();
+        }
+
+        function mostrarCarrito() {
+            const carritoUI = document.getElementById('carrito');
+            carritoUI.innerHTML = '';
+            let total = 0;
+
+            carrito.forEach((producto, index) => {
+                const totalProducto = producto.precio * producto.cantidad;
+                total += totalProducto;
+                carritoUI.innerHTML += `<li style="padding: 10px; border-bottom: 1px solid #ddd;">
+                    ${producto.nombre} x${producto.cantidad} - $${producto.precio.toFixed(2)} c/u - $${totalProducto.toFixed(2)}
+                    <button onclick="eliminarDelCarrito(${index})" style="background-color: red; color: white; border: none; padding: 5px; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                </li>`;
+            });
+
+            carritoUI.innerHTML += `<li style="padding: 10px; font-weight: bold;">Total: $${total.toFixed(2)}</li>`;
+        }
+
+      function eliminarDelCarrito(index) {
+    // Verificar si la cantidad es mayor a 1 para reducirla, si es igual a 1 eliminar el producto
+    if (carrito[index].cantidad > 1) {
+        carrito[index].cantidad -= 1;
+    } else {
+        carrito.splice(index, 1);
+    }
+    mostrarCarrito();
+}
+
+
+        function vaciarCarrito() {
+            carrito.length = 0;
+            mostrarCarrito();
+        }
+
+        function finalizarPedido() {
+            if (carrito.length > 0) {
+                alert('¡Pedido realizado con éxito!');
+                carrito.length = 0;
+                mostrarCarrito();
+            } else {
+                alert('Tu carrito está vacío.');
+            }
+        }
+    </script>
+</body>
+</html>
+
+{% endblock %}

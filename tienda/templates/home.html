@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<html lang="es">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Heladería</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            text-align: center;
+            background-color: #fffff;
+            padding: 20px;
+        }
+        .hero-img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            font-size: 45px;
+            color: #9488c9;
+            font-family: 'Nerko One', cursive;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #7a7a7a;
+        }
+        .info-section {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #fff;
+        }
+        .info-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #9488c9;
+        }
+        .info-cards {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #fafafa;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+        }
+        .card-img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            color: #444;
+            margin-bottom: 10px;
+        }
+        .card p {
+            font-size: 1rem;
+            color: #666;
+        }
+        .cta {
+            text-align: center;
+            background-color: #dbd5f4;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-color: #ffffff;
+        }
+        .cta-button {
+            padding: 10px 20px;
+            background-color: #ff7f50;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #ff4500;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <img src="static/images/fondo.jpeg" alt="Heladería Banner" class="hero-img">
+        <h1 class="hero-title">Bienvenido a la Heladería</h1>
+        <p class="hero-subtitle">Te damos la bienvenida a un espacio único donde el sabor y la calidad se encuentran en cada cucharada. Nuestro propósito es ofrecerte una experiencia inolvidable a través de helados artesanales hechos con los mejores ingredientes, para que disfrutes de cremosos y deliciosos sabores que te transporten a un mundo de placer.
+
+El objetivo de nuestra heladería es brindarte productos frescos, innovadores y llenos de sabor, preparados con dedicación para satisfacer tus antojos y hacer de cada visita una ocasión especial. Ven y déjate sorprender por nuestra variedad de opciones, pensadas para todos los gustos y preferencias.</p>
+    </div>
+
+    <div class="info-section">
+        <h2>¿Por qué elegirnos?</h2>
+        <div class="info-cards">
+            <div class="card">
+                <img src="static/images/helado_fresco.jpg" alt="Helados frescos" class="card-img">
+                <h3>Helados Frescos</h3>
+                <p>Preparados diariamente con ingredientes de alta calidad.</p>
+            </div>
+            <div class="card">
+                <img src="static/images/variedad_sabores.avif" alt="Variedad de sabores" class="card-img">
+                <h3>Variedad de Sabores</h3>
+                <p>Desde los clásicos hasta combinaciones innovadoras para todos los gustos.</p>
+            </div>
+            <div class="card">
+                <img src="static/images/ambiente_acogedor.avif" alt="Ambiente acogedor" class="card-img">
+                <h3>Ambiente Acogedor</h3>
+                <p>Un espacio perfecto para disfrutar con familia y amigos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta" style="text-align: center; margin: 30px 0;">
+    <h2 style="color: #black; font-family: 'Arial', sans-serif;">¡Haz tu pedido ahora!</h2>
+    <br>
+        <a href="/pedido" class="cta-button" style="text-decoration: none; background-color: #beb3eb; color: white; padding: 15px 30px; border-radius: 5px; font-size: 18px; transition: background-color 0.3s ease;">Ordenar</a>
+        <br>
+</div>
+
+</body>
+</html>
+{% endblock %}
