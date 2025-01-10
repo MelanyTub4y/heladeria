@@ -55,5 +55,11 @@ El código debe ser modular y bien documentado, lo que permitirá realizar actua
 Se debe implementar un sistema de control de versiones para gestionar los cambios en el código (por ejemplo, Git).
 
 # Modelo Relacional Django
+Mysql:
 ![image](https://github.com/user-attachments/assets/d6ce0a10-dcb4-406f-ab6f-b064cb5c75bb)
+
+Django:
+
+![image](https://github.com/user-attachments/assets/52ae71d7-a859-4836-b60f-c0b9892574e3)
+![image](https://github.com/user-attachments/assets/505c911f-3fbf-4aa4-bb10-1dfde296c88d)
 
